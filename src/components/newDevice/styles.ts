@@ -14,17 +14,18 @@ export const DevicesHeader = styled('div', {
 
   'a': {
     textDecoration: 'none',
-    color: '$white300',
-    opacity: 0.6,
+    color: '#616D70',
+    transition: '200ms',
 
     '&:hover': {
-      opacity: 1
+      opacity: 1,
+      color: '$primary'
     }
   }
 })
 
 export const ConectedDevices = styled('div', {
-  color: '$white300'
+  color: '$primary'
 })
 
 export const Devices = styled('div', {
@@ -47,7 +48,7 @@ export const DeviceContainer = styled('div', {
   padding: '1.2rem',
   height: '6rem',
   background: '$gray600',
-  color: '$white300',
+  color: '$primary',
   display: 'flex',
   justifyContent: 'space-between',
   fontSize: '$lg',
@@ -59,14 +60,14 @@ export const DeviceContainer = styled('div', {
 })
 
 export const AddDevice = styled('h2', {
-  color: '$gray300',
-  opacity: 0.6,
+  color: '#616D70',
   fontSize: '1rem',
   alignSelf: 'end',
-
+  transition: '200ms',
 
   '&:hover': {
     opacity: 1,
+    color: '$white300',
     cursor: 'pointer'
   }
 })

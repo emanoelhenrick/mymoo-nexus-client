@@ -1,3 +1,4 @@
+import { keyframes } from "@stitches/react"
 import { styled } from "../../styles"
 
 export const HomeContainer = styled('div', {
@@ -14,17 +15,18 @@ export const DevicesHeader = styled('div', {
 
   'a': {
     textDecoration: 'none',
-    color: '$white300',
-    opacity: 0.6,
+    color: '#616D70',
+    transition: '200ms',
 
     '&:hover': {
-      opacity: 1
+      opacity: 1,
+      color: '$primary'
     }
   }
 })
 
 export const ConectedDevices = styled('div', {
-  color: '$white300'
+  color: '$primary'
 })
 
 export const Devices = styled('div', {
@@ -52,7 +54,6 @@ export const DeviceContainer = styled('div', {
   justifyContent: 'space-between',
   fontSize: '$lg',
   borderRadius: '0.4rem',
-  transition: '1s',
 
   '&:hover': {
     '.remover': {
@@ -77,8 +78,9 @@ export const Status = styled('div', {
 
   '.remover': {
     fontSize: '0.8rem',
-    color: 'red',
+    color: '$primary',
     opacity: 0,
+    transition: '200ms',
 
     '&:hover': {
       opacity: '0.6',
@@ -87,12 +89,21 @@ export const Status = styled('div', {
   }
 })
 
+const blinks = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+});
+
+
 export const Led = styled('div', {
 
   variants: {
     isConected: {
       true: { background: '#49b86b' },
-      false: { background: 'red' }
+      false: {
+        background: '$primary',
+        animation: `${blinks} 400ms ease-out alternate infinite`
+      }
     }
   },
 
@@ -104,7 +115,7 @@ export const Led = styled('div', {
 
 export const Time = styled('div', {
   fontSize: '0.8rem',
-  opacity: 0.4
+  color: '#616D70'
 })
 
 export const DevicesEmpty = styled('div', {

@@ -1,3 +1,4 @@
+'use client'
 import { ConectedDevices, DeviceContainer, DeviceStatus, Devices, DevicesEmpty, DevicesHeader, HomeContainer, Led, Status, Time } from "./styles";
 import { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
@@ -5,12 +6,10 @@ import ptBR from "date-fns/locale/pt-BR";
 import { Device } from "../../device/Device";
 import { Link } from "react-router-dom";
 import { nexus } from "../../configs/axios";
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import { Fade } from "react-awesome-reveal";
 
 export function HomeContent() {
-  useQueryClient()
-  
   const [devices, setDevices] = useState<Device[]>([])
 
   const { data, isSuccess, isRefetching, remove } = useQuery('devices', getDevices, {
@@ -59,7 +58,7 @@ export function HomeContent() {
       </DevicesHeader>
 
       <Devices isEmpty={devices.length === 0} >
-      <Fade direction="up" duration={200} cascade damping={0.1} style={{width: '100%'}}>
+      <Fade direction="up" duration={300} cascade damping={0.1} style={{width: '100%'}}>
         {devices.length > 0 ? devices.map(dev => {
           const isConnected = dev.isConnected()
 

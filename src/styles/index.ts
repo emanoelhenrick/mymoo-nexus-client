@@ -13,9 +13,10 @@ export const {
   theme: {
     colors: {
       white: '#f5f5f5',
-      white300: '#dce4e7',
+      white300: '#BBC2C4',
       gray600: '#171e28',
       gray700: '#111820',
+      primary: '#EF5A46'
     },
 
     fontSizes: {
