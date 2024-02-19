@@ -21,18 +21,17 @@
       {
         "fullscreen": false,
         "resizable": true,
+        "maximized": true,
         "title": "MyMoo Nexus Client",
-        "width": 1100,
         "minWidth": 1100,
         "minHeight": 600,
-        "height": 600,
         "center": true,
         "visible": false,
         "label": "main"
       },
       {
-        "width": 1100,
-        "height": 600,
+        "width": 600,
+        "height": 300,
         "decorations": false,
         "url": "splashscreen.html",
         "center": true,
