@@ -1,6 +1,11 @@
 import { keyframes } from "@stitches/react"
 import { styled } from "../../styles"
 
+const blinks = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+});
+
 export const HomeContainer = styled('div', {
   background: '$gray700',
   borderRadius: '0.6rem',
@@ -8,10 +13,19 @@ export const HomeContainer = styled('div', {
 })
 
 export const DevicesHeader = styled('div', {
+  variants: {
+    isNexus: {
+      false: {
+        'a': {
+          display: 'none'
+        }
+      }
+    }
+  },
+
   paddingBottom: '1.2rem',
   display: ' flex',
   justifyContent: 'space-between',
-  
 
   'a': {
     textDecoration: 'none',
@@ -26,6 +40,16 @@ export const DevicesHeader = styled('div', {
 })
 
 export const ConectedDevices = styled('div', {
+
+  variants: {
+    isNexus: {
+      false: {
+        animation: `${blinks} 600ms ease-out alternate infinite`
+      }
+    }
+  },
+
+  cursor: 'default',
   color: '$primary'
 })
 
@@ -54,6 +78,7 @@ export const DeviceContainer = styled('div', {
   justifyContent: 'space-between',
   fontSize: '$lg',
   borderRadius: '0.4rem',
+  cursor: 'default',
 
   '&:hover': {
     '.remover': {
@@ -89,12 +114,6 @@ export const Status = styled('div', {
   }
 })
 
-const blinks = keyframes({
-  '0%': { opacity: 0 },
-  '100%': { opacity: 1 },
-});
-
-
 export const Led = styled('div', {
 
   variants: {
@@ -125,5 +144,6 @@ export const DevicesEmpty = styled('div', {
   background: '$gray600',
   borderRadius: '0.6rem',
   color: '$white300',
-  alignSelf: 'center'
+  alignSelf: 'center',
+  cursor: 'default'
 })

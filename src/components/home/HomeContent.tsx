@@ -1,4 +1,3 @@
-'use client'
 import { ConectedDevices, DeviceContainer, DeviceStatus, Devices, DevicesEmpty, DevicesHeader, HomeContainer, Led, Status, Time } from "./styles";
 import { useEffect, useState } from "react";
 import { formatDistanceToNow } from "date-fns";
@@ -13,10 +12,13 @@ export function HomeContent() {
   const [devices, setDevices] = useState<Device[]>([])
 
   const { data, isSuccess, isRefetching, remove } = useQuery('devices', getDevices, {
-    refetchInterval: 3000,
+    refetchInterval: 1000,
   })
 
   useEffect(() => {
+    console.log(isSuccess);
+    
+
     if (isSuccess) setDevices(data)
   }, [isSuccess, isRefetching])
 
@@ -50,10 +52,15 @@ export function HomeContent() {
     }
   }
 
+  function isNexusConnected() {
+    if (!isSuccess) return 'Tentando conectar ao Nexus...'
+    return pluralCalc(devices.length)
+  }
+
   return (
     <HomeContainer>
-      <DevicesHeader>
-        <ConectedDevices>{pluralCalc(devices.length)}</ConectedDevices>
+      <DevicesHeader isNexus={isSuccess}>
+        <ConectedDevices isNexus={isSuccess}>{isNexusConnected()}</ConectedDevices>
         <Link to={'/add'}>Adicionar dispositivos</Link>
       </DevicesHeader>
 
